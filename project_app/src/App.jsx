@@ -4,6 +4,7 @@ import { DrawerAppBar } from "./components/Navbar";
 import { ButtonComponent } from "./components/ButtonComponent";
 import { useEffect, useState } from "react";
 import Aurora from "./components/Background";
+import { Viewer } from "resium"
 
 function App() {
   const [positions, setPositions] = useState([]);
@@ -44,16 +45,18 @@ function App() {
         </div>
 
         {/* Foreground content */}
-        <div className="relative z-10 min-h-screen min-w-screen mt-3">
+        <div className="relative z-10 h-screen min-w-screen ">
           <DrawerAppBar />
-
-          <div className="-mt-10 h-56 w-full flex justify-center ">
+          <div className="h-full w-full flex flex-col items-center gap-3">
             <ButtonComponent
               text="Query Windborne Balloon Positions"
               styling="button-primary w-[300px] h-[60px]"
               loading={isLoading}
               onClick={handleClick}
             />
+            <div className="w-8/10 p-5">
+            <Viewer />
+            </div>
           </div>
         </div>
       </StyledEngineProvider>
