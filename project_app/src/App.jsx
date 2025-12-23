@@ -15,6 +15,8 @@ export const appContext = createContext({
   setLocations: () => {},
   time: "",
   setTime: () => {},
+  localData: {},
+  setLocalData: () => {},
 });
 
 function App() {
@@ -24,10 +26,18 @@ function App() {
     const rawData = localStorage.getItem("balloons");
     return rawData ? JSON.parse(rawData) : [];
   });
+  const [localData, setLocalData] = useState(() => {
+    const rawData = localStorage.getItem("localData");
+    return rawData ? JSON.parse(rawData) : {};
+  });
   const [time, setTime] = useState(null); // the location of the balloons based on the selected time period (minus)
 
   const validateShape = (x) => {
-    if (Array.isArray(x)) return x;
+    if (Array.isArray(x)) {
+      return x;
+    } else if (typeof x === "object") {
+      return x;
+    }
   };
 
   useEffect(() => {
@@ -44,7 +54,20 @@ function App() {
     }
   }, [balloonLocations]);
 
-  
+  useEffect(() => {
+    if (!localData || Object.keys(localData).length === 0) return;
+    console.log(localData)
+    try {
+      const valid = validateShape(localData);
+      localStorage.setItem("localData", JSON.stringify(valid));
+    } catch (err) {
+      console.error({
+        message: err.message,
+        stack: err.stack,
+        name: err.name,
+      });
+    }
+  }, [localData]);
 
   return (
     <>
@@ -59,6 +82,8 @@ function App() {
             setLocations,
             time,
             setTime,
+            localData,
+            setLocalData,
           }}
         >
           {/* Background layer */}
