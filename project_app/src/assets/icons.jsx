@@ -1,0 +1,33 @@
+export function Celsius(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="0.75em"
+      height="0.75em"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M4.5 10a3.5 3.5 0 1 1 0-7a3.5 3.5 0 0 1 0 7m0-2a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M22 10h-2a4 4 0 0 0-8 0v5a4 4 0 0 0 8 0h2a6 6 0 0 1-12 0v-5a6 6 0 0 1 12 0"
+      ></path>
+    </svg>
+  )
+}
+
+export function Fahrenheit(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="0.75em"
+      height="0.75em"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M12 12h7v2h-7v7h-2V8a4 4 0 0 1 4-4h7v2h-7a2 2 0 0 0-2 2zm-7.5-2a3.5 3.5 0 1 1 0-7a3.5 3.5 0 0 1 0 7m0-2a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3"
+      ></path>
+    </svg>
+  )
+}

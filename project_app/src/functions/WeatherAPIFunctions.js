@@ -14,7 +14,7 @@
         );
       }
       const data = await res.json();
-      console.log(data);
+      return data
     } catch (err) {
       console.error("Failed getting local info",{
         url,

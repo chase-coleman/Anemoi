@@ -1,6 +1,7 @@
 import { ButtonComponent } from "./ButtonComponent";
 import Globe from "./Globe";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import LocationData from "./LocationData";
 
 const CardDisplay = ({
   globe,
@@ -70,9 +71,9 @@ const CardDisplay = ({
 
   return (
     <>
-      <div className="magic-bento-card__content">
-        <h2 className="magic-bento-card__title">{card.title}</h2>
-      </div>
+    <div className="!bg-red-500 w-full h-full">
+  <LocationData />
+    </div>
     </>
   );
 };

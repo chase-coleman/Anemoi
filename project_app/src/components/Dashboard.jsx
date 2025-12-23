@@ -484,7 +484,7 @@ const MagicBento = ({
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
-  const { isLoading, setLoading, setLocations, time, setTime } =
+  const { isLoading, setLoading, setLocations, time, setTime, localData } =
     useContext(appContext);
 
   // calls the state setter to update the balloon locations at selected times and automatically calls the API func

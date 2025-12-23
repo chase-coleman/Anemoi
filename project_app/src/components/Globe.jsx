@@ -6,7 +6,7 @@ import getLocalData from "../functions/WeatherAPIFunctions";
 
 const Globe = () => {
   const viewerRef = useRef(null);
-  const { balloonLocations } = useContext(appContext);
+  const { balloonLocations, setLocalData } = useContext(appContext);
 
   // memorizes the values - so in the Globe component, everytime the Viewer is re-created - it's not taking in a new contextOptions
   // - therefore not re-rendering the globe and losing the created entities. needed because the first API call was always getting re-rendered
@@ -47,6 +47,11 @@ const Globe = () => {
     viewer.scene.maximumRenderTimeChange = 0; // ensure time changes trigger renders
   }, []);
 
+  const handleEntityClick = async (location) => {
+    const data = await getLocalData(location);
+    setLocalData(data)    
+  };
+
   return (
     <Viewer
       ref={viewerRef}
@@ -74,7 +79,7 @@ const Globe = () => {
             position={Cesium.Cartesian3.fromDegrees(lon, lat, alt)}
             point={{ pixelSize: 10 }}
             onClick={() => {
-              getLocalData({ index, lon, lat });
+              handleEntityClick({ index, lon, lat });
             }}
           />
         );
