@@ -484,7 +484,7 @@ const MagicBento = ({
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
-  const { isLoading, setLoading, setLocations, time, setTime, localData } =
+  const { isLoading, setLoading, setLocations, time, setTime, localData, setLocalData } =
     useContext(AppContext);
 
   // calls the state setter to update the balloon locations at selected times and automatically calls the API func
@@ -503,8 +503,10 @@ const MagicBento = ({
 
   const clearLocations = () => {
     localStorage.removeItem("balloons");
+    localStorage.removeItem("localData")
     setLocations([]);
     setTime(null)
+    setLocalData({})
   };
 
   return (

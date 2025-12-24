@@ -11,7 +11,7 @@ export const About = () => {
       <div className="relative z-10 min-h-screen w-screen flex flex-col">
         <DrawerAppBar />
         <div className="h-[calc(100vh-112px)] flex flex-col">
-          <div className="flex justify-center gap-[5em] text-white text-[1.5em] p-5">
+          <div className="link-container flex justify-center text-white text-[1.5em] lg:gap-[5em] md:gap-[3em] sm:text-[1.2em] sm:gap-[2em] p-5">
             <a
               href="https://github.com/chase-coleman/ProjectApp"
               target="_blank"
@@ -35,8 +35,8 @@ export const About = () => {
             </a>
           </div>
           <div className="flex flex-col text-[#060010] font-semibold p-5">
-            <div className="api-info gap-5 w-full p-5">
-              <div className="glass api-container rounded-lg min-h-[212px] tracking-widest p-3">
+            <div className="api-info  gap-5 w-full p-5">
+              <div className="glass api-container rounded-lg w-1/2 min-h-[212px] tracking-widest p-3">
                 <h1 className="text-[1.5em]">Windborne API</h1>
                 <span className="">
                   Returns data points from Windborne’s atmospheric balloons.
@@ -55,7 +55,7 @@ export const About = () => {
                   without introducing unnecessary complexity or assumptions.
                 </span>
               </div>
-              <div className="glass api-container rounded-lg flex flex-col gap-2 min-h-[212px] tracking-widest  p-3">
+              <div className="glass api-container rounded-lg flex flex-col gap-2 w-1/2 min-h-[212px] tracking-widest  p-3">
                 <h1 className="text-[1.5em]">Weather API</h1>
                 <span>
                   The Weather API was used to retrieve local atmospheric,
@@ -72,6 +72,16 @@ export const About = () => {
                 </span>
               </div>
             </div>
+          </div>
+          <div className="">
+            <ShinyText text="Technology" disabled={false} speed={7} />
+            <Loop
+              marqueeText="React ✦ React Router ✦ Express ✦ TailwindCSS ✦ MaterialUI ✦ CesiumJS ✦ ResiumJS ✦ React Bits ✦"
+              speed={1}
+              curveAmount={0}
+              direction="right"
+              interactive={true}
+            />
           </div>
           <div className="p-3 rounded-lg text-[#060010] font-semibold tracking-widest ">
             <div className="glass flex flex-col p-3 gap-3 rounded-lg ">
@@ -105,17 +115,6 @@ export const About = () => {
               instead of silently ignoring updates.
             </span>
             </div>
-          </div>
-          <div className="">
-            <ShinyText text="Technology" disabled={false} speed={7} />
-            <Loop
-              marqueeText="React ✦ React Router ✦ Express ✦ TailwindCSS ✦ MaterialUI ✦ CesiumJS ✦ ResiumJS ✦ React Bits ✦"
-              speed={1}
-              curveAmount={0}
-              direction="right"
-              interactive={true}
-              className="custom-text-style"
-            />
           </div>
         </div>
       </div>
