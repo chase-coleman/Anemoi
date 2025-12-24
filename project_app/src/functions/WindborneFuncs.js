@@ -1,3 +1,5 @@
+const VITE_RENDER_DOMAIN_DEFAULT = import.meta.env.VITE_RENDER_DOMAIN_DEFAULT
+
 export const handleWindborneCall = async (
   setLoading,
   setLocations,
@@ -5,7 +7,7 @@ export const handleWindborneCall = async (
 ) => {
   setLoading(true);
 
-  const url = `/api/treasure/${encodeURIComponent( //encodeURIComponent makes a string safe for URL paths
+  const url = `${VITE_RENDER_DOMAIN_DEFAULT}/api/treasure/${encodeURIComponent( //encodeURIComponent makes a string safe for URL paths
     timePeriod
   )}.json`;
 
