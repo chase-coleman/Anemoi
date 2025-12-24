@@ -42,7 +42,7 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
-app.options("*", cors());
+app.options("/.*/", cors());
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
