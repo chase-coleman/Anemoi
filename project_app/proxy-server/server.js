@@ -8,15 +8,17 @@ const app = express();
 const WINDBORNE_URL = process.env.WINDBORNE_URL;
 const WEATHER_API = process.env.WEATHER_API;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+const RENDER_DOMAIN_DEFAULT = process.env.RENDER_DOMAIN_DEFAULT
 
 if (!WINDBORNE_URL) throw new Error("Missing WINDBORNE_URL");
 if (!WEATHER_API) throw new Error("Missing WEATHER_API");
 if (!WEATHER_API) throw new Error("Missing WEATHER_API");
+if (!RENDER_DOMAIN_DEFAULT) throw new Error("missing Default Domain");
 
 const PORT = process.env.PORT || 3001;
 
 const allowedOrigins = new Set([
-  "https://anemoi-6ww2.onrender.com"
+  RENDER_DOMAIN_DEFAULT,
 ]);
 
 app.use(
