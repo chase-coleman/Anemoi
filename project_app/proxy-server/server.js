@@ -19,29 +19,32 @@ if (!RENDER_DOMAIN_STANDARD) throw new Error("missing Standard Domain")
 
 const PORT = process.env.PORT || 3001;
 
-const allowedOrigins = new Set([
-  RENDER_DOMAIN_DEFAULT,
-  RENDER_DOMAIN_STANDARD
+const normalize = (s) => (s ?? "").trim().toLowerCase().replace(/\/$/, "");
 
-]);
-
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      // allow server-to-server, curl, health checks
-      if (!origin) return cb(null, true);
-
-      if (allowedOrigins.has(origin)) {
-        return cb(null, true);
-      }
-
-      // hard fail so issues show up clearly
-      return cb(new Error(`CORS blocked for origin: ${origin}`));
-    },
-    methods: ["GET", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
-  })
+const allowedOrigins = new Set(
+  [RENDER_DOMAIN_DEFAULT, RENDER_DOMAIN_STANDARD].map(normalize).filter(Boolean)
 );
+
+console.log("allowedOrigins =", [...allowedOrigins]);
+
+const corsOptions = {
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true);
+
+    const o = normalize(origin);
+    const ok = allowedOrigins.has(o);
+
+    console.log("CORS check:", { origin, normalized: o, ok });
+
+    // IMPORTANT: do not throw while debugging; return false instead
+    return cb(null, ok);
+  },
+  methods: ["GET", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
