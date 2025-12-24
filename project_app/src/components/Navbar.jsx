@@ -32,14 +32,15 @@ export function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Aeolus
+      <Typography variant="h6" sx={{ my: 2, fontFamily: "ocean" }}>
+        Anemoi
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton
+            
               sx={{ textAlign: "center" }}
               component={Link}
               to={item.url}
@@ -89,14 +90,15 @@ export function DrawerAppBar(props) {
               textAlign: "start",
               fontWeight: 500,
             }}
+            className="title"
           >
-            Aeolus
+            Anemoi
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
                 key={item.name}
-                sx={{ color: "#fff" }}
+                sx={{ color: "#fff", fontFamily: "domine" }}
                 component={Link}
                 to={item.url}
               >

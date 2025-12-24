@@ -7,6 +7,7 @@ import Aurora from "./components/Background";
 import MagicBento from "./components/Dashboard";
 import { Routes, Route, Link } from "react-router-dom";
 import {About} from "./pages/About"
+import NotFound from "./pages/ErrorPage";
 
 export const AppContext = createContext({
   positions: [],
@@ -102,12 +103,13 @@ function App() {
           <div className="relative z-10 min-h-screen w-screen flex flex-col">
             <DrawerAppBar />
 
-            <div className="flex-1 min-h-0 w-full flex flex-col items-center gap-3">
+            <div className="flex-1 min-h-0 w-full flex flex-col items-center gap-3 standard">
               <MagicBento enableMagnetism={false} />
               <div className="relative w-9/10 flex-1 min-h-0 p-5"></div>
             </div>
           </div>}/>
           <Route path="/about" element={<About />}/>
+          <Route path="*" element={<NotFound/>} />
       </Routes>
         </AppContext.Provider>
       </StyledEngineProvider>

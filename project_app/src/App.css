@@ -371,3 +371,10 @@
     gap: 1em;
   }
 }
+.title {
+  font-family: "ocean" !important;
+}
+
+.standard {
+  font-family: "domine";
+}

@@ -1,6 +1,4 @@
-import { StyledEngineProvider } from "@mui/material/styles";
 import { DrawerAppBar } from "../components/Navbar";
-import { ButtonComponent } from "../components/ButtonComponent";
 import Loop from "../components/Loop";
 import { LinkDiagonal } from "../assets/icons";
 
@@ -10,7 +8,7 @@ export const About = () => {
       {/* Foreground content */}
       <div className="relative z-10 min-h-screen w-screen flex flex-col">
         <DrawerAppBar />
-        <div className="h-[calc(100vh-112px)] flex flex-col">
+        <div className="h-[calc(100vh-112px)] flex flex-col standard">
           <div className="link-container flex justify-center text-white text-[1.5em] lg:gap-[5em] md:gap-[3em] sm:text-[1.2em] sm:gap-[2em] p-5">
             <a
               href="https://github.com/chase-coleman/ProjectApp"
